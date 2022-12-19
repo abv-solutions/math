@@ -1,0 +1,60 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &-group {
+    margin: 0.6rem 0;
+  }
+  input,
+  select,
+  textarea {
+    font: inherit;
+    font-size: 1.2rem;
+    display: block;
+    width: clamp(13rem, calc(20vw + 9rem), 40rem);
+    padding: 0.4rem;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 3px 3px rgba(set-text-color($control-color), 0.1) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    box-shadow: 0 1px 1px rgba(set-text-color($control-color), 0.1) inset,
+      0 0 10px 2px rgba(set-text-color($control-color), 0.6);
+    outline: 0 none;
+  }
+  button {
+    font: inherit;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+#call {
+  form {
+    flex-direction: row;
+    justify-content: center;
+    input,
+    button {
+      height: 3rem;
+    }
+    input {
+      width: clamp(9rem, calc(15vw + 6rem), 20rem);
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      &:hover {
+        transform: scale(1);
+        background-color: lighten($primary-color, 10);
+      }
+    }
+  }
+}
