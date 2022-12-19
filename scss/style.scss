@@ -33,6 +33,7 @@ hr {
 .company {
 	position: absolute;
 	left: 0;
+	padding: 2rem;
 	top: 4rem;
 	z-index: 2;
 	display: flex;
@@ -40,6 +41,7 @@ hr {
 	align-items: center;
 	.logo {
 		width: clamp(8rem, calc(10vw + 5rem), 14rem);
+		padding-bottom: 1rem;
 	}
 	.txt-type {
 		font-size: clamp(1rem, calc(1.5vw + 0.4rem), 1.5rem);

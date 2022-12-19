@@ -1,8 +1,8 @@
 // Variables
 // $control-color: #252930;
 $control-color: #eee;
-$primary-color: #008cff;
-$secondary-color: #00c72b;
+$primary-color: #0e786a;
+$secondary-color: #605310;
 $dark-color: #252930;
 $light-color: #eee;
 $danger-color: #dc3545;
@@ -12,7 +12,7 @@ $home-image: url('../img/showcase.jpg');
 $hook-image: url('../img/montaj.jpg');
 $call-image: url('../img/plan.jpg');
 $pattern-image: url('../img/pattern.png');
-$background-opacity: 0.8;
+$background-opacity: 0.7;
 
 // Set text color based on background
 @function set-text-color($color) {
