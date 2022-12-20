@@ -164,7 +164,7 @@ hr {
 				rgba($control-color, $background-opacity),
 				rgba($dark-color, $background-opacity)
 			),
-			$hook-image repeat;
+			$hook-image no-repeat center center/cover;
 		background-blend-mode: multiply;
 		background-attachment: fixed;
 	}
