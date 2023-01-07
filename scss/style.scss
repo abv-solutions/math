@@ -317,7 +317,7 @@ hr {
 	width: 100%;
 	&:after {
 		content: '';
-		height: calc(55rem - clamp(0rem, 50vw, 20rem));
+		height: calc(80rem - clamp(0rem, 70vw, 40rem));
 		z-index: -1;
 		display: block;
 		background: linear-gradient(
