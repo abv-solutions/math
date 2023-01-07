@@ -11,6 +11,15 @@
 			}
 		}
 	}
+	#workp {
+		.projects {
+			.project {
+				&:hover {
+					transform: scale(1.48);
+				}
+			}
+		}
+	}
 }
 @include mediaSm {
 	.mb-5 {
@@ -71,6 +80,15 @@
 	#work {
 		.work-description {
 			text-align: left;
+		}
+	}
+	#workp {
+		.projects {
+			.project {
+				&:hover {
+					transform: unset;
+				}
+			}
 		}
 	}
 	#call {

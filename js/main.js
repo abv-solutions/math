@@ -1,34 +1,34 @@
-const toggle = document.querySelector('.toggle')
-const menuNav = document.querySelector('.menu-nav')
-const navItems = document.querySelectorAll('.nav-item')
-const txtElement = document.querySelector('.txt-type')
+const toggle = document.querySelector('.toggle');
+const menuNav = document.querySelector('.menu-nav');
+const navItems = document.querySelectorAll('.nav-item');
+const txtElement = document.querySelector('.txt-type');
 
-let initial = true
-let currentLanguage = 'ro'
-let currentTheme = 'Dark'
+let initial = true;
+let currentLanguage = 'ro';
+let currentTheme = 'Dark';
 
-window.onresize = checkForSmallWidth
-document.addEventListener('DOMContentLoaded', () => TypeWriter.start())
-toggle.addEventListener('click', toggleMenu)
+window.onresize = checkForSmallWidth;
+document.addEventListener('DOMContentLoaded', () => TypeWriter.start());
+toggle.addEventListener('click', toggleMenu);
 
-changeLanguage(currentLanguage)
+changeLanguage(currentLanguage);
 
 // Change color theme
 function changeTheme() {
-	let link = document.createElement('link')
-	link.setAttribute('rel', 'stylesheet')
-	link.setAttribute('type', 'text/css')
-	link.setAttribute('href', `css/style${currentTheme}.css`)
-	document.head.appendChild(link)
+	let link = document.createElement('link');
+	link.setAttribute('rel', 'stylesheet');
+	link.setAttribute('type', 'text/css');
+	link.setAttribute('href', `css/style${currentTheme}.css`);
+	document.head.appendChild(link);
 	setTimeout(() => {
-		document.styleSheets[2].disabled = true
-		document.head.removeChild(document.head.childNodes[initial ? 17 : 18])
-		initial = false
-	}, 300)
+		document.styleSheets[2].disabled = true;
+		document.head.removeChild(document.head.childNodes[initial ? 17 : 18]);
+		initial = false;
+	}, 300);
 
 	document.querySelector('.pitch img').src = `img/icons/cost-${
 		currentTheme == 'Dark' ? 'w' : 'b'
-	}.png`
+	}.png`;
 	document
 		.querySelectorAll('.step img')
 		.forEach(
@@ -36,104 +36,110 @@ function changeTheme() {
 				(e.src = `img/icons/step-${i + 1}-${
 					currentTheme == 'Dark' ? 'w' : 'b'
 				}.png`)
-		)
+		);
 
-	currentTheme = currentTheme == 'Light' ? 'Dark' : 'Light'
+	currentTheme = currentTheme == 'Light' ? 'Dark' : 'Light';
 }
 
 // Change text language
 function changeLanguage() {
 	document
 		.querySelectorAll(`span[lang="${currentLanguage}"]`)
-		.forEach((e) => (e.style.display = 'block'))
+		.forEach((e) => (e.style.display = 'block'));
 	document
 		.querySelectorAll(`span[lang="${currentLanguage}-inline"]`)
-		.forEach((e) => (e.style.display = 'inline'))
+		.forEach((e) => (e.style.display = 'inline'));
 	document
 		.querySelectorAll(`span[lang="${currentLanguage == 'en' ? 'ro' : 'en'}"]`)
-		.forEach((e) => (e.style.display = 'none'))
+		.forEach((e) => (e.style.display = 'none'));
 	document
 		.querySelectorAll(
 			`span[lang="${currentLanguage == 'en' ? 'ro' : 'en'}-inline"]`
 		)
-		.forEach((e) => (e.style.display = 'none'))
+		.forEach((e) => (e.style.display = 'none'));
 	document
 		.querySelectorAll('input[name="email"]')
 		.forEach(
 			(e) =>
 				(e.placeholder =
 					currentLanguage == 'en' ? 'Email address' : 'Adresă de email')
-		)
+		);
 	document.querySelector('input[name="name"]').placeholder =
-		currentLanguage == 'en' ? 'Name' : 'Nume'
+		currentLanguage == 'en' ? 'Name' : 'Nume';
 	document.querySelector('textarea[name="message"]').placeholder =
-		currentLanguage == 'en' ? 'Your message' : 'Mesaj'
+		currentLanguage == 'en' ? 'Your message' : 'Mesaj';
 
-	currentLanguage = currentLanguage == 'en' ? 'ro' : 'en'
-	checkForSmallWidth()
+	currentLanguage = currentLanguage == 'en' ? 'ro' : 'en';
+	checkForSmallWidth();
 }
 
 function checkForSmallWidth() {
 	const vw = Math.max(
 		document.documentElement.clientWidth || 0,
 		window.innerWidth || 0
-	)
-	let input = document.querySelector('.call-content form input[name="email"]')
+	);
+	let input = document.querySelector('.call-content form input[name="email"]');
 	if (vw < 430)
-		input.placeholder = currentLanguage == 'ro' ? 'Email address' : 'Email'
+		input.placeholder = currentLanguage == 'ro' ? 'Email address' : 'Email';
 	else
 		input.placeholder =
-			currentLanguage == 'ro' ? 'Email address' : 'Adresă de email'
+			currentLanguage == 'ro' ? 'Email address' : 'Adresă de email';
 }
 
 function toggleMenu() {
 	if (toggle.checked == true) {
-		menuNav.classList.add('show')
-		navItems.forEach((item) => item.classList.add('show'))
+		menuNav.classList.add('show');
+		navItems.forEach((item) => item.classList.add('show'));
 	} else {
-		menuNav.classList.remove('show')
-		navItems.forEach((item) => item.classList.remove('show'))
+		menuNav.classList.remove('show');
+		navItems.forEach((item) => item.classList.remove('show'));
 	}
 }
 
 // Type writer effect
 class TypeWriter {
 	constructor(txtElement, words, wait) {
-		this.txtElement = txtElement
-		this.words = words
-		this.txt = ''
-		this.wordIndex = 0
-		this.wait = parseInt(wait, 10)
-		this.isDeleting = false
-		this.type()
+		this.txtElement = txtElement;
+		this.words = words;
+		this.txt = '';
+		this.wordIndex = 0;
+		this.wait = parseInt(wait, 10);
+		this.isDeleting = false;
+		this.type();
 	}
 	type() {
-		const current = this.wordIndex % this.words.length
-		const fullText = this.words[current]
-		let typeSpeed = 150
+		const current = this.wordIndex % this.words.length;
+		const fullText = this.words[current];
+		let typeSpeed = 150;
 		if (this.isDeleting) {
-			this.txt = fullText.substring(0, this.txt.length - 1)
-			typeSpeed /= 2
+			this.txt = fullText.substring(0, this.txt.length - 1);
+			typeSpeed /= 2;
 		} else {
-			this.txt = fullText.substring(0, this.txt.length + 1)
+			this.txt = fullText.substring(0, this.txt.length + 1);
 		}
-		this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`
-		this.txtElement.style.display = 'inline'
+		this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+		this.txtElement.style.display = 'inline';
 		if (!this.isDeleting && this.txt === fullText) {
-			this.isDeleting = true
-			typeSpeed = this.wait
+			this.isDeleting = true;
+			typeSpeed = this.wait;
 		} else if (this.isDeleting && this.txt === '') {
-			this.isDeleting = false
-			this.wordIndex++
-			typeSpeed = 500
-			this.txtElement.style.display = 'none'
+			this.isDeleting = false;
+			this.wordIndex++;
+			typeSpeed = 500;
+			this.txtElement.style.display = 'none';
 		}
 		// Cyclic function call
-		setTimeout(() => this.type(), typeSpeed)
+		setTimeout(() => this.type(), typeSpeed);
 	}
 	static start() {
-		const words = JSON.parse(txtElement.getAttribute('data-words'))
-		const wait = txtElement.getAttribute('data-wait')
-		new TypeWriter(txtElement, words, wait)
+		const words = JSON.parse(txtElement.getAttribute('data-words'));
+		const wait = txtElement.getAttribute('data-wait');
+		new TypeWriter(txtElement, words, wait);
 	}
+}
+
+function swipe(id) {
+	var largeImage = document.getElementById(id);
+	var url = largeImage.getAttribute('src');
+	window.open(url, '_blank');
 }
